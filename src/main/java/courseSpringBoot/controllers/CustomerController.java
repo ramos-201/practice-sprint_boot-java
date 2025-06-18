@@ -53,4 +53,15 @@ public class CustomerController {
         }
         return null;
     }
+
+    @DeleteMapping("/clients/{id}")
+    public Customer deleteClient(@PathVariable int id) {
+        for (Customer c : customers) {
+            if (c.getId() == id) {
+                customers.remove(c);
+                return c;
+            }
+        }
+        return null;
+    }
 }
