@@ -60,12 +60,12 @@ public class CustomerController {
                 c.setUsername(customer.getUsername());
                 c.setPassword(customer.getPassword());
 
-                return ResponseEntity.ok("Client: '" + customer.getName() + "' updated successfully.");
+                // return ResponseEntity.ok("Client: '" + customer.getName() + "' updated successfully.");
+                return ResponseEntity.noContent().build();
             }
         }
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body("Client with id: '" + customer.getId() + "' not found.");
+        // return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Client with id: '" + customer.getId() + "' not found.");
+        return ResponseEntity.notFound().build();
     }
 
     // @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -74,14 +74,12 @@ public class CustomerController {
         for (Customer c : customers) {
             if (c.getId() == id) {
                 customers.remove(c);
-                return ResponseEntity
-                        .status(HttpStatus.NO_CONTENT)
-                        .body("Client with id: '" + c.getId() + "' deleted successfully.");
+                // return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Client with id: '" + c.getId() + "' deleted successfully.");
+                return ResponseEntity.noContent().build();
             }
         }
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body("Client with id: '" + id + "' not found.");
+        // return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Client with id: '" + id + "' not found.");
+        return ResponseEntity.noContent().build();
     }
 
     // @RequestMapping(method = RequestMethod.PATCH)
